@@ -1,2 +1,0 @@
-# breach-data
-Includes information required to implement breaching within the hydraulic model. Including breach locations and system response data. Information regarding breach parameters may also be included here.
