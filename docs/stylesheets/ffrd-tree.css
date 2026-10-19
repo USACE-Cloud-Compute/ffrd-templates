@@ -1,0 +1,100 @@
+/* Folder browser on the home page. Colours come from the Material theme variables so
+   it follows the light/dark palette; only the layout and states are defined here. */
+.ffrd { --ffrd-line: var(--md-default-fg-color--lightest); --ffrd-edge: var(--md-default-fg-color--lighter); --ffrd-sel: color-mix(in srgb, var(--md-accent-fg-color) 22%, transparent); margin: 1.5rem 0; }
+
+.ffrd__bar { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .6rem; margin-bottom: .75rem; }
+.ffrd__search { flex: 1 1 16rem; min-width: 0; padding: .4rem .6rem; font: inherit; font-size: .75rem; color: var(--md-default-fg-color); background: transparent; border: 1px solid var(--md-default-fg-color--lighter); border-radius: .15rem; }
+.ffrd__search:focus-visible { outline: 2px solid var(--md-accent-fg-color); outline-offset: 1px; }
+.ffrd__btn { padding: .35rem .7rem; font: inherit; font-size: .72rem; color: var(--md-default-fg-color); background: transparent; border: 1px solid var(--md-default-fg-color--lighter); border-radius: .15rem; cursor: pointer; }
+.ffrd__btn:hover { border-color: var(--md-accent-fg-color); color: var(--md-accent-fg-color); }
+.ffrd__audit { font-size: .72rem; color: var(--md-default-fg-color--light); }
+.ffrd__count { margin-left: auto; font-size: .72rem; color: var(--md-default-fg-color--light); }
+
+.ffrd__body { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 1.25rem; align-items: start; }
+
+/* tree */
+.md-typeset .ffrd__tree { max-height: 70vh; overflow: auto; margin: 0; padding: .4rem; list-style: none; border: 1px solid var(--ffrd-edge); border-radius: .2rem; }
+.md-typeset .ffrd__tree ul, .md-typeset .ffrd__tree li { list-style: none; margin: 0; padding: 0; }
+.md-typeset .ffrd__kids { margin-left: .7rem; padding-left: .5rem; border-left: 1px solid var(--ffrd-line); }
+.ffrd__item[hidden], .ffrd__kids[hidden] { display: none; }
+
+.ffrd__row { display: flex; align-items: center; gap: .4rem; width: 100%; box-sizing: border-box; padding: .22rem .5rem .22rem 1.3rem; position: relative; font: inherit; font-size: .74rem; text-align: left; color: inherit; background: none; border: 0; border-radius: .15rem; cursor: pointer; }
+.ffrd__row:hover { background: var(--ffrd-line); }
+.ffrd__row:focus-visible { outline: 2px solid var(--md-accent-fg-color); outline-offset: -2px; }
+.ffrd__row.is-selected { background: var(--ffrd-sel); box-shadow: inset 2px 0 0 var(--md-accent-fg-color); }
+
+.ffrd__row.is-folder::before { content: ""; position: absolute; left: .5rem; top: .55rem; width: .38rem; height: .38rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); opacity: .6; }
+.ffrd__row.is-folder[aria-expanded="true"]::before { transform: rotate(45deg); top: .45rem; }
+@media (prefers-reduced-motion: no-preference) { .ffrd__row.is-folder::before { transition: transform .12s; } }
+
+.ffrd__name { flex: none; font-family: var(--md-code-font-family, monospace); font-weight: 500; }
+.ffrd__leaf .ffrd__name { font-weight: 400; }
+.ffrd__row.is-hit .ffrd__name { color: var(--md-accent-fg-color); }
+.ffrd__flag { flex: none; padding: 0 .35rem; font-size: .62rem; border: 1px solid var(--md-default-fg-color--lighter); border-radius: .15rem; color: var(--md-default-fg-color--light); }
+
+/* description panel */
+.ffrd__panel { position: sticky; top: 4rem; box-sizing: border-box; max-height: calc(100vh - 5rem); overflow: auto; padding: 1rem 1.2rem; border: 1px solid var(--ffrd-edge); border-radius: .2rem; font-size: .78rem; }
+.ffrd__path { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .3rem; margin-bottom: .8rem; font-family: var(--md-code-font-family, monospace); font-size: .72rem; }
+.ffrd__crumb { font-weight: 700; word-break: break-word; }
+.ffrd__sep { opacity: .4; }
+.ffrd__link { padding: 0; font: inherit; color: var(--md-default-fg-color--light); background: none; border: 0; cursor: pointer; }
+.ffrd__link:hover { color: var(--md-accent-fg-color); text-decoration: underline; }
+.ffrd__link:focus-visible { outline: 2px solid var(--md-accent-fg-color); }
+.md-typeset .ffrd__desc > :first-child { margin-top: 0; }
+.md-typeset .ffrd__desc h4 { margin: 1.1em 0 .3em; font-size: .78rem; font-weight: 700; letter-spacing: 0; text-transform: none; color: var(--md-default-fg-color--light); }
+.md-typeset .ffrd__desc ul, .md-typeset .ffrd__desc ol { margin: .4em 0; }
+.ffrd__empty, .ffrd__note { color: var(--md-default-fg-color--light); }
+.md-typeset .ffrd__files { margin: 1rem 0 0; font-size: .72rem; color: var(--md-default-fg-color--light); }
+.md-typeset .ffrd__actions { display: flex; align-items: center; gap: 1rem; margin: 1rem 0 0; }
+
+/* Names-only tree in the Templates section */
+.md-typeset .ffrd-files__tree { max-height: 70vh; overflow: auto; margin: 0; padding: .4rem; list-style: none; border: 1px solid var(--ffrd-edge); border-radius: .2rem; }
+.md-typeset .ffrd-files__tree ul, .md-typeset .ffrd-files__tree li { list-style: none; margin: 0; padding: 0; }
+.md-typeset .ffrd-files__kids { margin-left: .7rem; padding-left: .5rem; border-left: 1px solid var(--ffrd-line); }
+.ffrd-files__kids[hidden] { display: none; }
+
+.ffrd-files__row { display: flex; align-items: center; gap: .4rem; width: 100%; box-sizing: border-box; padding: .18rem .5rem .18rem 1.3rem; position: relative; font: inherit; font-family: var(--md-code-font-family, monospace); font-size: .74rem; text-align: left; color: inherit; background: none; border: 0; border-radius: .15rem; }
+button.ffrd-files__row { cursor: pointer; }
+button.ffrd-files__row:hover { background: var(--ffrd-line); }
+.ffrd-files__row:focus-visible { outline: 2px solid var(--md-accent-fg-color); outline-offset: -2px; }
+.ffrd-files__row.is-file { color: var(--md-default-fg-color--light); }
+
+button.ffrd-files__row::before { content: ""; position: absolute; left: .5rem; top: .5rem; width: .38rem; height: .38rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); opacity: .6; }
+button.ffrd-files__row[aria-expanded="true"]::before { transform: rotate(45deg); top: .4rem; }
+@media (prefers-reduced-motion: no-preference) { button.ffrd-files__row::before { transition: transform .12s; } }
+
+/* Folder and file icons, used by both trees */
+.ffrd-icon { flex: none; width: .9rem; height: .9rem; background: currentColor; -webkit-mask: var(--ffrd-icon) center / contain no-repeat; mask: var(--ffrd-icon) center / contain no-repeat; }
+.ffrd-icon--folder { color: var(--md-accent-fg-color); --ffrd-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg>'); }
+.ffrd-icon--file { --ffrd-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 7V3.5L18.5 9H13z"/></svg>'); }
+
+/* Download button with a small-print note beside it (wraps below on narrow screens) */
+.ffrd-download { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; margin: 1em 0; }
+.md-typeset .ffrd-download .md-button { flex: none; }
+.md-typeset .ffrd-footnote { flex: 1 1 16rem; max-width: 30rem; margin: 0; font-size: .62rem; font-style: italic; line-height: 1.5; color: var(--md-default-fg-color--light); opacity: .8; }
+.md-typeset .ffrd-footnote code { font-style: normal; font-size: .95em; }
+/* Secondary button pushed to the right edge, in muted colours */
+.md-typeset .ffrd-download .ffrd-download__aside { margin-left: auto; padding: .45em 1.2em; font-size: .68rem; font-weight: 400; color: var(--md-default-fg-color--light); border-color: var(--md-default-fg-color--lightest); }
+.md-typeset .ffrd-download .ffrd-download__aside:hover, .md-typeset .ffrd-download .ffrd-download__aside:focus { color: var(--md-accent-fg-color); background: transparent; border-color: var(--md-accent-fg-color); }
+
+/* Image popup (View Task Matrix). Fits the window; .is-full shows the image at full size
+   and the view scrolls. */
+.ffrd-popup { box-sizing: border-box; width: calc(100vw - 2rem); max-width: none; height: calc(100vh - 2rem); max-height: none; padding: 0; color: var(--md-default-fg-color); background: var(--md-default-bg-color); border: 1px solid var(--md-default-fg-color--lighter); border-radius: .2rem; }
+.ffrd-popup[open] { display: flex; flex-direction: column; }
+.ffrd-popup::backdrop { background: rgba(0, 0, 0, .6); }
+.ffrd-popup__head { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; padding: .5rem .8rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); font-size: .8rem; }
+.ffrd-popup__title { margin-right: auto; }
+.ffrd-popup__hint { font-size: .68rem; color: var(--md-default-fg-color--light); }
+.ffrd-popup a.ffrd__btn { color: var(--md-default-fg-color); text-decoration: none; }
+.ffrd-popup a.ffrd__btn:hover { color: var(--md-accent-fg-color); }
+.ffrd-popup__view { display: flex; flex: 1; min-height: 0; overflow: auto; }
+.ffrd-popup__img { margin: auto; max-width: 100%; max-height: 100%; cursor: zoom-in; }
+.ffrd-popup__view.is-full .ffrd-popup__img { max-width: none; max-height: none; cursor: zoom-out; }
+
+/* Version and date after the site name in the header bar (overrides/partials/header.html) */
+.ffrd-header-version { margin-left: .8em; padding-left: .8em; font-size: .75em; font-weight: 400; border-left: 1px solid currentColor; opacity: .65; }
+
+/* Keep the site name in the header bar. Material otherwise swaps it for the page heading
+   once that scrolls out of view. */
+.md-header__topic + .md-header__topic { display: none; }
+.md-header__title--active .md-header__topic { opacity: 1; pointer-events: auto; transform: none; z-index: 0; }

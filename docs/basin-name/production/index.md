@@ -1,0 +1,4 @@
+# production
+Model files for the *production* phase are stored in the Model Library watershed repository under production. Final models from the conformance phase are promoted to the production directory and production simulations are executed in cloud compute and output data is stored here. When hot fix model edits are needed for individual events, a hotfix subdirectory will be created to store the model versions.
+
+Note that documentation and terrain files associated with each hydraulic model are posted to separate directories (documentation and terrain-modeling and should not be included here).

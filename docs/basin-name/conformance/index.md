@@ -1,0 +1,4 @@
+# conformance
+Model files for the conformance phase are stored in the Model Library watershed repository under conformance. Final individual models from the calibration phase are promoted to the conformance directory, integrated, executed in cloud compute, and adjusted to match long term observed data in frequency space. When adjustments are necessary to individual models, outdated models are moved to the archive subdirectory and replaced with the current version. Integrated models run through many simulations in cloud compute and results are stored here.
+
+Note that documentation and terrain files associated with each hydraulic model are posted to separate directories (documentation and terrain-modeling and should not be included here).

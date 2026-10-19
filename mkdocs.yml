@@ -1,0 +1,60 @@
+site_name: FFRD Directory Structure and Templates
+site_url: https://corbylewis.github.io/ffrd-templates/
+
+theme:
+  name: material
+  custom_dir: overrides       # header.html adds the version line after the site name
+  palette:
+    scheme: slate
+    primary: black
+    accent: blue
+
+# An empty list matters: leaving "plugins" out makes MkDocs turn its search plugin on.
+# The folder filter on the home page replaces site search.
+plugins: []
+
+hooks:
+  - hooks/ffrd_site.py       # builds assets/tree.json and the template zip
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 0
+  - admonition
+  - pymdownx.details
+  - attr_list                # lets index.md style the download button
+
+extra_css:
+  - stylesheets/ffrd-tree.css
+
+extra_javascript:
+  - javascripts/ffrd-tree.js
+
+extra:
+  generator: false
+  ffrd:
+    version: SOP Version 1 - October 2026    # shown after the site name in the header
+    template_root: basin-name
+    zip_name: ffrd-directory-structure.zip
+    zip_desc_file: README.md   # index.md is renamed to this inside the zip
+    # Text written into folders that have no description of their own yet. The site treats
+    # a page containing only this text as "not described" (and falls back to the parent's
+    # section for that folder if there is one). fix_titles.py reads it from here too.
+    placeholder: "ffrd directory structure. see parent directory for description of intended use"
+    # Separate folder of downloadable templates, shown names-only in the Templates section
+    templates_root: ffrd-templates
+    templates_zip: ffrd-templates.zip
+    # Second folder of downloads, shown the same way in the Resources section
+    resources_root: resources
+    resources_zip: ffrd-resources.zip
+
+docs_dir: docs
+use_directory_urls: true
+
+# The folder descriptions are data for the browser on the home page and for the zip
+# (hooks/ffrd_site.py reads them straight from docs/), not pages of their own. The same
+# goes for the templates and resources folders, which are only offered as zips.
+exclude_docs: |
+  basin-name/
+  ffrd-templates/
+  resources/
