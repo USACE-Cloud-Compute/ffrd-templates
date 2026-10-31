@@ -18,7 +18,7 @@ hooks:
 
 markdown_extensions:
   - toc:
-      permalink: true
+      permalink: false
       toc_depth: 0
   - admonition
   - pymdownx.details
@@ -33,7 +33,7 @@ extra_javascript:
 extra:
   generator: false
   ffrd:
-    version: SOP Version 1 - October 2026    # shown after the site name in the header
+    version: SOP Version 1 - Pre-decisional Draft - December 2026   # shown after the site name in the header
     template_root: basin-name
     zip_name: ffrd-directory-structure.zip
     zip_desc_file: README.md   # index.md is renamed to this inside the zip
@@ -47,14 +47,18 @@ extra:
     # Second folder of downloads, shown the same way in the Resources section
     resources_root: resources
     resources_zip: ffrd-resources.zip
+    # SOP PDF and its HTML index, offered together as one zip in the SOP Materials section
+    sop_root: sop
+    sop_zip: ffrd-sop.zip
 
 docs_dir: docs
 use_directory_urls: true
 
 # The folder descriptions are data for the browser on the home page and for the zip
 # (hooks/ffrd_site.py reads them straight from docs/), not pages of their own. The same
-# goes for the templates and resources folders, which are only offered as zips.
+# goes for the templates, resources and SOP folders, which are only offered as zips.
 exclude_docs: |
   basin-name/
   ffrd-templates/
   resources/
+  sop/
