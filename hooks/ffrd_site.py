@@ -13,6 +13,8 @@ and does the same, names only, for each separate download folder (Templates, Res
   ``docs/<resources_root>``)
 * ``assets/<key>_zip``       - that folder as-is (hidden files such as .gitkeep left out)
 
+and the zip alone, with no tree, for each zip-only folder (SOP: ``docs/<sop_root>``).
+
 The build functions are plain Python with no MkDocs dependency, so they
 can also be run on their own: ``python hooks/ffrd_site.py --out build-assets``.
 Configuration lives under ``extra.ffrd`` in mkdocs.yml.
@@ -40,8 +42,11 @@ DEFAULTS = {
     "templates_zip": "ffrd-templates.zip",
     "resources_root": "resources",       # folder under docs/ holding reference material
     "resources_zip": "ffrd-resources.zip",
+    "sop_root": "sop",                   # folder under docs/ holding the SOP PDF and its index
+    "sop_zip": "ffrd-sop.zip",
 }
 FILE_SECTIONS = ("templates", "resources")  # each reads <key>_root and <key>_zip from the config
+ZIP_SECTIONS = ("sop",)                     # same keys, but only the zip is offered
 _MD_EXT = ["tables", "sane_lists", "admonition"]
 
 
@@ -287,6 +292,9 @@ def on_files(files, config):
              json.dumps(build_files_tree(docs_dir, cfg, key), ensure_ascii=False, separators=(",", ":"))),
             (f"assets/{cfg[key + '_zip']}", build_files_zip(docs_dir, cfg, key)),
         ]
+    for key in ZIP_SECTIONS:
+        print(f"INFO    -  ffrd_site: {key} folder '{cfg[key + '_root']}' -> {cfg[key + '_zip']}")
+        payload.append((f"assets/{cfg[key + '_zip']}", build_files_zip(docs_dir, cfg, key)))
     for src_uri, content in payload:
         files.append(File.generated(config, src_uri, content=content))
     return files
@@ -303,5 +311,7 @@ if __name__ == "__main__":  # standalone use, no MkDocs needed
     (out / DEFAULTS["zip_name"]).write_bytes(build_zip(Path(a.docs), {}))
     for key in FILE_SECTIONS:
         (out / f"{key}-tree.json").write_text(json.dumps(build_files_tree(Path(a.docs), {}, key)), encoding="utf-8")
+        (out / DEFAULTS[f"{key}_zip"]).write_bytes(build_files_zip(Path(a.docs), {}, key))
+    for key in ZIP_SECTIONS:
         (out / DEFAULTS[f"{key}_zip"]).write_bytes(build_files_zip(Path(a.docs), {}, key))
     print(f"wrote {out}/")

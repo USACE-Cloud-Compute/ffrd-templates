@@ -36,3 +36,13 @@ Reference material for FFRD project execution.
 [Download resources (.zip)](assets/ffrd-resources.zip){ .md-button .md-button--primary }
 
 <div id="ffrd-resources" data-ffrd-files data-src="assets/resources-tree.json" data-empty="No resources have been added yet."></div>
+
+## FFRD SOP Materials
+
+The FFRD Standard Operating Procedures for Inland Data Development (Version 1,
+Pre-decisional Draft, December 2026) can be downloaded here as a single zip containing
+the SOP (PDF) and the SOP index (HTML). The index is a searchable list of SOP topics
+that links to pages in the PDF; keep the two files together in the same folder so the
+links open the right pages.
+
+[Download SOP and index (.zip)](assets/ffrd-sop.zip){ .md-button .md-button--primary }

@@ -10,7 +10,12 @@ This site provides:
      - QC Checklists, Documentation Checklists, etc
      - Useful tools
 
+3. FFRD SOP materials
+     - the SOP (PDF) and its searchable HTML index, downloaded together as one zip
+
 Site: https://usace-cloud-compute.github.io/ffrd-templates/
+
+SOP download: https://usace-cloud-compute.github.io/ffrd-templates/assets/ffrd-sop.zip
 
 ## How it works
 
@@ -26,6 +31,9 @@ Site: https://usace-cloud-compute.github.io/ffrd-templates/
     lists every folder explicitly and each one contains a `README.md`.
   - `assets/templates-tree.json` and `assets/ffrd-templates.zip`, from `docs/ffrd-templates/`
     (see below).
+  - `assets/ffrd-sop.zip`, from `docs/sop/`: the SOP PDF and its HTML index, offered as one
+    download in the FFRD SOP Materials section. Replace the files there to update it; the
+    index links to the PDF by file name, so keep the two names matching.
 - `docs/ffrd-templates/` is a separate folder of downloadable templates, unrelated to the
   `basin-name` structure. Add folders and files there as they should appear in the download;
   the Templates section of the home page lists them by name, and the zip contains them
