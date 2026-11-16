@@ -10,3 +10,4 @@ This folder stores the complete model and final results of replication of each h
 * upload entire directory (all models: HMS, ResSim, RAS) after validation on desktop
 * no cloud-compute involved
  
+> Note that *event-validation* is still in-development and not fully implemented within SOP v1. This folder structure is a placeholder and may be used.
