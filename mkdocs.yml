@@ -34,7 +34,7 @@ extra:
   generator: false
   ffrd:
     version: SOP Version 1 - Pre-decisional Draft - December 2026   # shown after the site name in the header
-    template_root: basin-name
+    template_root: ffrd_basin-name
     zip_name: ffrd-directory-structure.zip
     zip_desc_file: README.md   # index.md is renamed to this inside the zip
     # Text written into folders that have no description of their own yet. The site treats
@@ -58,7 +58,7 @@ use_directory_urls: true
 # (hooks/ffrd_site.py reads them straight from docs/), not pages of their own. The same
 # goes for the templates, resources and SOP folders, which are only offered as zips.
 exclude_docs: |
-  basin-name/
+  ffrd_basin-name/
   ffrd-templates/
   resources/
   sop/
