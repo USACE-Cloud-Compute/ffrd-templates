@@ -4,7 +4,7 @@ import re
 import yaml
 
 # Only the template folder mirrors a real directory structure (see set_titles.py).
-ROOT = os.path.join("docs", "basin-name")
+ROOT = os.path.join("docs", "ffrd_basin-name")
 SKIP_DIRS = {"stylesheets", "javascripts"}
 
 # Single source of truth is mkdocs.yml (extra.ffrd.placeholder); the site treats a page

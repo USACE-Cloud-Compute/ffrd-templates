@@ -10,16 +10,11 @@ This site provides:
      - QC Checklists, Documentation Checklists, etc
      - Useful tools
 
-3. FFRD SOP materials
-     - the SOP (PDF) and its searchable HTML index, downloaded together as one zip
-
 Site: https://usace-cloud-compute.github.io/ffrd-templates/
-
-SOP download: https://usace-cloud-compute.github.io/ffrd-templates/assets/ffrd-sop.zip
 
 ## How it works
 
-- `docs/basin-name/` is the template. Each folder holds an `index.md` describing its
+- `docs/ffrd_basin-name/` is the template. Each folder holds an `index.md` describing its
   intended use. These files are data, not site pages (`exclude_docs` in `mkdocs.yml`):
   the site is a single home page with a folder browser. Every folder has an `index.md`, so
   no placeholder files are needed to keep folders in git.
@@ -31,11 +26,8 @@ SOP download: https://usace-cloud-compute.github.io/ffrd-templates/assets/ffrd-s
     lists every folder explicitly and each one contains a `README.md`.
   - `assets/templates-tree.json` and `assets/ffrd-templates.zip`, from `docs/ffrd-templates/`
     (see below).
-  - `assets/ffrd-sop.zip`, from `docs/sop/`: the SOP PDF and its HTML index, offered as one
-    download in the FFRD SOP Materials section. Replace the files there to update it; the
-    index links to the PDF by file name, so keep the two names matching.
 - `docs/ffrd-templates/` is a separate folder of downloadable templates, unrelated to the
-  `basin-name` structure. Add folders and files there as they should appear in the download;
+  `ffrd_basin-name` structure. Add folders and files there as they should appear in the download;
   the Templates section of the home page lists them by name, and the zip contains them
   as-is. Files and folders starting with `.` are left out, so a `.gitkeep` can hold an
   otherwise empty folder in git.

@@ -1,2 +1,0 @@
-# nhd
-Folder includes static version of then National Hydrography Dataset (NHD) waterway information collected during Data Preparation Phase. NHD data includes several geospatial datasets of interest, including stream centerlines and waterway types.
