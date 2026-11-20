@@ -28,9 +28,6 @@ Model linking register for the project that clearly shows the source of all requ
 ## name-table
 Tables that pre-define key model element names for the study that is developed during the Scoping and Data Preparation Phase.
 
-## observed-data-linking-table
-Table of the relationship of each observed data location to its corresponding scoped model element name.
-
 ## study-area-polygon
 Polygon defining the study area for the project.
 
